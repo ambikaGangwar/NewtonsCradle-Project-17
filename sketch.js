@@ -1,9 +1,10 @@
-const Engine = Matter.Engine;
+ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Render = Matter.Render;
 const Constraint = Matter.Constraint;
+
 var bob1,bob2,bob3, bob4,bob5, roofObject
 var rope1,rope2,rope3, rope4,rope5;
 var world;
@@ -23,23 +24,19 @@ function setup() {
 
 	startBobPositionX=width/2;
 	startBobPositionY=height/4+500;
+	//bob
 	bob1=new Bob(startBobPositionX-bobDiameter*2,startBobPositionY,bobDiameter);
 	bob2=new Bob(startBobPositionX-bobDiameter,startBobPositionY,bobDiameter);
 	bob3=new Bob(startBobPositionX,startBobPositionY,bobDiameter);
 	bob4=new Bob(startBobPositionX+bobDiameter,startBobPositionY,bobDiameter);
 	bob5=new Bob(startBobPositionX+bobDiameter*2,startBobPositionY,bobDiameter);
 	
-	
-	 
- 
-
-
-	rope1=new Rope(bob1.body,roofObject.body,-bobDiameter*2, 0)
-
-	rope2=new Rope(bob2.body,roofObject.body,-bobDiameter, 0)
-	rope3=new Rope(bob3.body,roofObject.body,0, 0)
-	rope4=new Rope(bob4.body,roofObject.body,bobDiameter, 0)
-	rope5=new Rope(bob5.body,roofObject.body,bobDiameter*2, 0)
+//rope
+	rope1=new Rope(bob1.body,roofObject.body,-bobDiameter*2, 0);
+	rope2=new Rope(bob2.body,roofObject.body,-bobDiameter, 0);
+	rope3=new Rope(bob3.body,roofObject.body,0, 0);
+	rope4=new Rope(bob4.body,roofObject.body,bobDiameter, 0);
+	rope5=new Rope(bob5.body,roofObject.body,bobDiameter*2, 0);
 
 	 
 	Engine.run(engine);
@@ -49,6 +46,7 @@ function setup() {
 
 
 function draw() {
+
  rectMode(CENTER);
  background(230);
  roofObject.display();
@@ -77,12 +75,12 @@ function keyPressed() {
 
 function drawLine(constraint)
 {
-	bobBodyPosition=constraint.bodyA.position
-	roofBodyPosition=constraint.bodyB.position
+	bobBodyPosition=constraint.bodyA.position;
+	roofBodyPosition=constraint.bodyB.position;
 
 	roofBodyOffset=constraint.pointB;
 	
-	roofBodyX=roofBodyPosition.x+roofBodyOffset.x
-	roofBodyY=roofBodyPosition.y+roofBodyOffset.y
+	roofBodyX=roofBodyPosition.x+roofBodyOffset.x;
+	roofBodyY=roofBodyPosition.y+roofBodyOffset.y;
 	line(bobBodyPosition.x, bobBodyPosition.y, roofBodyX,roofBodyY);
 }
