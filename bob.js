@@ -1,4 +1,4 @@
-class Bob{
+ class Bob{
 
     constructor(x,y,r){
 var options={
@@ -11,13 +11,18 @@ var options={
 this.x=x;
 this.y=y;
 this.r=r;
-this.body=Bodies.circle(this.x,this.y,this.r/2,options)
+this.body=Bodies.circle(this.x,this.y,this.r/2,options);
 World.add(world,this.body);
 
 }
 display(){
-
+  var paperpos=this.body.position
+push()
+translate(paperpos.x,paperpos.y);
   ellipseMode(CENTER)
-  ellipse(this.body.position.x,this.body.position.y,this.width,this.height);
+  stroke("pink");
+  fill("hotpink");
+  ellipse(0,0,this.r,this.r);
+  pop()
 }
 }
