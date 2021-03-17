@@ -1,11 +1,12 @@
-class Rope {
+ class Rope {
 
-    constructor(bodyA,bodyB,offsetX,offsetY){
+    constructor( body1,body2,offsetX,offsetY){
+
    this.offsetX=offsetX
    this.offsetY=offsetY
      var options={
-    bodyA:bodyA,
-    bodyB:bodyB,
+    bodyA:body1,
+    bodyB:body2,
     pointB:{x:this.offsetX,y:this.offsetY}
     
     }
@@ -23,7 +24,12 @@ class Rope {
         var pointB=this.rope.bodyB.position;
         
         strokeWeight(4);
-        line(pointA.x,pointA.y,pointB.x,pointB.y);
+        var anchor1x=pointA.x;
+        var anchor1y=pointA.y;
+        var anchor2x=pointB.x + this.offsetX;
+         var anchor2y=pointB.y + this.offsetY;
+
+        line( anchor1x,anchor1y,anchor2x,anchor2y);
     }
     
     
